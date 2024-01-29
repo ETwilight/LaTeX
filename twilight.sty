@@ -1,0 +1,113 @@
+\RequirePackage{graphicx} % Required for inserting images
+\RequirePackage{amssymb, amsmath, amsthm, dsfont}
+\RequirePackage{tikz}
+\RequirePackage{pgfplots}
+\RequirePackage{hyperref}
+\RequirePackage{xcolor}
+\RequirePackage{enumitem}
+\RequirePackage{fancyhdr}
+
+\usepgfplotslibrary{fillbetween}
+\usetikzlibrary{patterns}
+
+\usetikzlibrary {patterns.meta}
+\tikzdeclarepattern{
+  name=mylines,
+  parameters={
+      \pgfkeysvalueof{/pgf/pattern keys/size},
+      \pgfkeysvalueof{/pgf/pattern keys/angle},
+      \pgfkeysvalueof{/pgf/pattern keys/line width},
+  },
+  bounding box={
+    (0,-0.5*\pgfkeysvalueof{/pgf/pattern keys/line width}) and
+    (\pgfkeysvalueof{/pgf/pattern keys/size},
+0.5*\pgfkeysvalueof{/pgf/pattern keys/line width})},
+  tile size={(\pgfkeysvalueof{/pgf/pattern keys/size},
+\pgfkeysvalueof{/pgf/pattern keys/size})},
+  tile transformation={rotate=\pgfkeysvalueof{/pgf/pattern keys/angle}},
+  defaults={
+    size/.initial=5pt,
+    angle/.initial=45,
+    line width/.initial=.4pt,
+  },
+  code={
+      \draw [line width=\pgfkeysvalueof{/pgf/pattern keys/line width}]
+        (0,0) -- (\pgfkeysvalueof{/pgf/pattern keys/size},0);
+  },
+}
+
+\newcommand{\pf}[2]{\dfrac{\partial #1}{\partial #2}}
+\newcommand{\df}[2]{\dfrac{\text{d} #1}{\text{d} #2}}
+\newcommand{\R}{\mathds{R}}
+\newcommand{\N}{\mathds{N}}
+\newcommand{\Q}{\mathds{Q}}
+\newcommand{\C}{\mathds{C}}
+\newcommand{\Z}{\mathds{Z}}
+\newcommand{\Ac}{\mathcal{A}}
+\newcommand{\Bc}{\mathcal{B}}
+\newcommand{\Cc}{\mathcal{C}}
+\newcommand{\Dc}{\mathcal{D}}
+\newcommand{\Ec}{\mathcal{E}}
+\newcommand{\Fc}{\mathcal{F}}
+\newcommand{\Gc}{\mathcal{G}}
+\newcommand{\Hc}{\mathcal{H}}
+\newcommand{\Ic}{\mathcal{I}}
+\newcommand{\Jc}{\mathcal{J}}
+\newcommand{\Kc}{\mathcal{K}}
+\newcommand{\Lc}{\mathcal{L}}
+\newcommand{\Mc}{\mathcal{M}}
+\newcommand{\Nc}{\mathcal{N}}
+\newcommand{\Oc}{\mathcal{O}}
+\newcommand{\Pc}{\mathcal{P}}
+\newcommand{\Qc}{\mathcal{Q}}
+\newcommand{\Rc}{\mathcal{R}}
+\newcommand{\Sc}{\mathcal{S}}
+\newcommand{\Tc}{\mathcal{T}}
+\newcommand{\Uc}{\mathcal{U}}
+\newcommand{\Vc}{\mathcal{B}}
+\newcommand{\Wc}{\mathcal{W}}
+\newcommand{\Xc}{\mathcal{X}}
+\newcommand{\Yc}{\mathcal{Y}}
+\newcommand{\Zc}{\mathcal{Z}}
+\newcommand{\ab}{\mathbf{a}}
+\newcommand{\bb}{\mathbf{b}}
+\newcommand{\cb}{\mathbf{c}}
+\newcommand{\db}{\mathbf{d}}
+\newcommand{\eb}{\mathbf{e}}
+\newcommand{\fb}{\mathbf{f}}
+\newcommand{\gb}{\mathbf{g}}
+\newcommand{\hb}{\mathbf{h}}
+\newcommand{\ib}{\mathbf{i}}
+\newcommand{\jb}{\mathbf{j}}
+\newcommand{\kb}{\mathbf{k}}
+\newcommand{\lb}{\mathbf{l}}
+\newcommand{\mb}{\mathbf{m}}
+\newcommand{\nb}{\mathbf{n}}
+\newcommand{\ob}{\mathbf{o}}
+\newcommand{\pb}{\mathbf{p}}
+\newcommand{\qb}{\mathbf{q}}
+\newcommand{\rb}{\mathbf{r}}
+\renewcommand{\sb}{\mathbf{s}}
+\newcommand{\ub}{\mathbf{u}}
+\newcommand{\vb}{\mathbf{v}}
+\newcommand{\wb}{\mathbf{w}}
+\newcommand{\xb}{\mathbf{x}}
+\newcommand{\yb}{\mathbf{y}}
+\newcommand{\zb}{\mathbf{z}}
+\newcommand{\Ab}{\mathbf{A}}
+\newcommand{\Bb}{\mathbf{B}}
+\newcommand{\Cb}{\mathbf{C}}
+\newcommand{\Rb}{\mathbf{R}}
+\newcommand{\Sb}{\mathbf{S}}
+\newcommand{\Ub}{\mathbf{U}}
+\newcommand{\Vb}{\mathbf{V}}
+\newcommand{\Wb}{\mathbf{W}}
+\newcommand{\Xb}{\mathbf{X}}
+\newcommand{\Yb}{\mathbf{Y}}
+\newcommand{\Zb}{\mathbf{Z}}
+\newcommand{\zerob}{\mathbf{0}}
+\newcommand{\oneb}{\mathbf{1}}
+\newcommand{\T}{\textnormal{T}}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+\newcommand{\pnorm}[2]{\left|\left|#1\right|\right|_{#2}}
+\newcommand{\djunion}{\perp\kern-5pt\perp}
