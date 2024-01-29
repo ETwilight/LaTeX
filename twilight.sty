@@ -10,30 +10,18 @@
 \usepgfplotslibrary{fillbetween}
 \usetikzlibrary{patterns}
 
-\usetikzlibrary {patterns.meta}
-\tikzdeclarepattern{
-  name=mylines,
-  parameters={
-      \pgfkeysvalueof{/pgf/pattern keys/size},
-      \pgfkeysvalueof{/pgf/pattern keys/angle},
-      \pgfkeysvalueof{/pgf/pattern keys/line width},
-  },
-  bounding box={
-    (0,-0.5*\pgfkeysvalueof{/pgf/pattern keys/line width}) and
-    (\pgfkeysvalueof{/pgf/pattern keys/size},
-0.5*\pgfkeysvalueof{/pgf/pattern keys/line width})},
-  tile size={(\pgfkeysvalueof{/pgf/pattern keys/size},
-\pgfkeysvalueof{/pgf/pattern keys/size})},
-  tile transformation={rotate=\pgfkeysvalueof{/pgf/pattern keys/angle}},
-  defaults={
-    size/.initial=5pt,
-    angle/.initial=45,
-    line width/.initial=.4pt,
-  },
-  code={
-      \draw [line width=\pgfkeysvalueof{/pgf/pattern keys/line width}]
-        (0,0) -- (\pgfkeysvalueof{/pgf/pattern keys/size},0);
-  },
+\pgfplotsset{compat=1.18}
+
+\newcommand{\CoursePage}{
+    \begin{center}
+        \LARGE \CourseTitle
+    \end{center}
+    \begin{center}
+        \Large ---\ \CourseAuthor\ --- \\ \CourseDate
+    \end{center}
+    \phantom{}
+    \hrule
+    \phantom{}\\
 }
 
 \newcommand{\pf}[2]{\dfrac{\partial #1}{\partial #2}}
@@ -121,3 +109,42 @@
 \newtheorem{lemma}{Lemma}
 \newtheorem{axiom}{Axiom}
 \newtheorem{program}{Program}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Citation of the code below                        %
+% TITLE: PGF/TikZ Manual                            %
+% SUBTITLE: Pattern Library                         %
+% AUTHOR: Mark Wibrow                               %
+% DATE: Jan 8th, 2024                               %
+% AVAILABILITY: https://tikz.dev/library-patterns   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Begin of Borrowed Code
+
+\usetikzlibrary {patterns.meta}
+\tikzdeclarepattern{
+  name=mylines,
+  parameters={
+      \pgfkeysvalueof{/pgf/pattern keys/size},
+      \pgfkeysvalueof{/pgf/pattern keys/angle},
+      \pgfkeysvalueof{/pgf/pattern keys/line width},
+  },
+  bounding box={
+    (0,-0.5*\pgfkeysvalueof{/pgf/pattern keys/line width}) and
+    (\pgfkeysvalueof{/pgf/pattern keys/size},
+0.5*\pgfkeysvalueof{/pgf/pattern keys/line width})},
+  tile size={(\pgfkeysvalueof{/pgf/pattern keys/size},
+\pgfkeysvalueof{/pgf/pattern keys/size})},
+  tile transformation={rotate=\pgfkeysvalueof{/pgf/pattern keys/angle}},
+  defaults={
+    size/.initial=5pt,
+    angle/.initial=45,
+    line width/.initial=.4pt,
+  },
+  code={
+      \draw [line width=\pgfkeysvalueof{/pgf/pattern keys/line width}]
+        (0,0) -- (\pgfkeysvalueof{/pgf/pattern keys/size},0);
+  },
+}
+
+% End of Borrowed Code
