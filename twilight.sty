@@ -1,4 +1,6 @@
-\RequirePackage{graphicx} % Required for inserting images
+% In a project, always first use the following mandatory packages
+% \usepackage{graphicx, amssymb, amsmath, amsthm, dsfont, tikz, pgfplots, hyperref, xcolor, enumitem, fancyhdr}
+\RequirePackage{graphicx}
 \RequirePackage{amssymb, amsmath, amsthm, dsfont}
 \RequirePackage{tikz}
 \RequirePackage{pgfplots}
@@ -12,25 +14,30 @@
 
 \pgfplotsset{compat=1.18}
 
+% Title Page Setup
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Example Usage:                                    %
+% \def\CourseTitle{ExampleCourse}                   %
+% \def\CourseAuthor{ExampleAuthor}                  %
+% \def\CourseDate{Fall 20xx Semester}               %
+% \CoursePage                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\CoursePage}{
-    \begin{center}
-        \LARGE \CourseTitle
-    \end{center}
-    \begin{center}
-        \Large ---\ \CourseAuthor\ --- \\ \CourseDate
-    \end{center}
-    \phantom{}
-    \hrule
-    \phantom{}\\
+    \begin{center}\LARGE \CourseTitle\end{center}
+    \begin{center}\Large ---\ \CourseAuthor\ --- \\ \CourseDate\end{center}
+    \phantom{}\hrule\phantom{}
 }
 
-\newcommand{\pf}[2]{\dfrac{\partial #1}{\partial #2}}
-\newcommand{\df}[2]{\dfrac{\text{d} #1}{\text{d} #2}}
+% Mathematical Notations
+\newcommand{\pf}[2]{\dfrac{\partial #1}{\partial #2}} % Partial Derivative
+\newcommand{\df}[2]{\dfrac{\text{d} #1}{\text{d} #2}} % Derivative
+% Number Sets
 \newcommand{\R}{\mathds{R}}
 \newcommand{\N}{\mathds{N}}
 \newcommand{\Q}{\mathds{Q}}
 \newcommand{\C}{\mathds{C}}
 \newcommand{\Z}{\mathds{Z}}
+% Calligraphic Letters
 \newcommand{\Ac}{\mathcal{A}}
 \newcommand{\Bc}{\mathcal{B}}
 \newcommand{\Cc}{\mathcal{C}}
@@ -52,11 +59,12 @@
 \newcommand{\Sc}{\mathcal{S}}
 \newcommand{\Tc}{\mathcal{T}}
 \newcommand{\Uc}{\mathcal{U}}
-\newcommand{\Vc}{\mathcal{B}}
+\newcommand{\Vc}{\mathcal{V}}
 \newcommand{\Wc}{\mathcal{W}}
 \newcommand{\Xc}{\mathcal{X}}
 \newcommand{\Yc}{\mathcal{Y}}
 \newcommand{\Zc}{\mathcal{Z}}
+% Bold Letters (Vectors, Matrices, Tensors, etc.)
 \newcommand{\ab}{\mathbf{a}}
 \newcommand{\bb}{\mathbf{b}}
 \newcommand{\cb}{\mathbf{c}}
@@ -75,7 +83,7 @@
 \newcommand{\pb}{\mathbf{p}}
 \newcommand{\qb}{\mathbf{q}}
 \newcommand{\rb}{\mathbf{r}}
-\renewcommand{\sb}{\mathbf{s}}
+\renewcommand{\sb}{\mathbf{s}}  % If you want to use the original \sb, you need to use \renewcommand
 \newcommand{\ub}{\mathbf{u}}
 \newcommand{\vb}{\mathbf{v}}
 \newcommand{\wb}{\mathbf{w}}
@@ -85,30 +93,57 @@
 \newcommand{\Ab}{\mathbf{A}}
 \newcommand{\Bb}{\mathbf{B}}
 \newcommand{\Cb}{\mathbf{C}}
+\newcommand{\Db}{\mathbf{D}}
+\newcommand{\Eb}{\mathbf{E}}
+\newcommand{\Fb}{\mathbf{F}}
+\newcommand{\Gb}{\mathbf{G}}
+\newcommand{\Hb}{\mathbf{H}}
+\newcommand{\Ib}{\mathbf{I}}
+\newcommand{\Jb}{\mathbf{J}}
+\newcommand{\Kb}{\mathbf{K}}
+\newcommand{\Lb}{\mathbf{L}}
+\newcommand{\Mb}{\mathbf{M}}
+\newcommand{\Nb}{\mathbf{N}}
+\newcommand{\Ob}{\mathbf{O}}
+\newcommand{\Pb}{\mathbf{P}}
+\newcommand{\Qb}{\mathbf{Q}}
 \newcommand{\Rb}{\mathbf{R}}
 \newcommand{\Sb}{\mathbf{S}}
+\newcommand{\Tb}{\mathbf{T}}
 \newcommand{\Ub}{\mathbf{U}}
 \newcommand{\Vb}{\mathbf{V}}
 \newcommand{\Wb}{\mathbf{W}}
 \newcommand{\Xb}{\mathbf{X}}
 \newcommand{\Yb}{\mathbf{Y}}
 \newcommand{\Zb}{\mathbf{Z}}
-\newcommand{\zerob}{\mathbf{0}}
-\newcommand{\oneb}{\mathbf{1}}
-\newcommand{\T}{\textnormal{T}}
-\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
-\newcommand{\pnorm}[2]{\left|\left|#1\right|\right|_{#2}}
-\newcommand{\djunion}{\perp\kern-5pt\perp}
-
+\newcommand{\zerob}{\mathbf{0}} % Zero Vector
+\newcommand{\oneb}{\mathbf{1}} % Vector of Ones
+\newcommand{\phib}{\boldsymbol{\phi}} % Feature Vector
+\newcommand{\Phib}{\boldsymbol{\Phi}} % Feature Matrix
+\newcommand{\T}{\textnormal{T}} % Transpose of a Matrix
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|} % l_2 Norm of a Vector (Default)
+\newcommand{\pnorm}[2]{\left\|#1\right\|_{#2}} % l_p Norm of a Vector
+\newcommand{\djunion}{\perp\kern-5pt\perp} % Disjoint Union
+% Real Analysis Symbols
+\newcommand{\bdry}[1]{\partial#1} % Boundary
+\newcommand{\itrr}[1]{#1^o} % Interior
+\newcommand{\clsr}[1]{\bar{#1}} % Closure
+% Machine Learning Notations
 \DeclareMathOperator*{\argmin}{arg\,min}
 \DeclareMathOperator*{\argmax}{arg\,max}
-
+\DeclareMathOperator{\sgn}{sgn}
+% Real Analysis Notations
+\DeclareMathOperator{\interior}{interior}
+\DeclareMathOperator{\closure}{closure}
+\DeclareMathOperator{\boundary}{boundary}
+% Theorem Notes Taking
 \newtheorem{theorem}{Theorem}
 \newtheorem{define}{Definition}
 \newtheorem{corollary}{Corollary}
 \newtheorem{lemma}{Lemma}
+\newtheorem{prop}{Properties}
 \newtheorem{axiom}{Axiom}
-\newtheorem{program}{Program}
+\newtheorem{program}{Program} % For Optimization Problems
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Citation of the code below                        %
@@ -120,6 +155,19 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Begin of Borrowed Code
+
+% How to use "mylines" pattern
+% Example Usage:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{tikzpicture}                                           %
+%   \begin{axis} [axis lines=center, axis on top, axis equal]   %
+%     \addplot [draw=none, domain=-2:0, name path=p1] {x+2};    %
+%     \addplot [draw=none, domain=-0.5:1.5, name path=p2] {x-1};%
+%\addplot[pattern={mylines[size=5pt,line width=.8pt,angle=45]}, %
+%        pattern color=blue!40] fill between[of=p5 and p6];     %
+%   \end{axis}                                                  %
+%\end{tikzpicture}                                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usetikzlibrary {patterns.meta}
 \tikzdeclarepattern{
