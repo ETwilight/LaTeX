@@ -8,6 +8,7 @@
 \RequirePackage{xcolor}
 \RequirePackage{enumitem}
 \RequirePackage{fancyhdr}
+\RequirePackage{xparse}
 
 \usepgfplotslibrary{fillbetween}
 \usetikzlibrary{patterns}
@@ -144,6 +145,41 @@
 \newtheorem{prop}{Properties}
 \newtheorem{axiom}{Axiom}
 \newtheorem{program}{Program} % For Optimization Problems
+
+% Tikz Commands
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Draw a Point in TikzPicture                              %
+% Example Usage                                            %
+% \drawPt{(1,1.5)} % draw a point at (1,1.5)               %
+% \drawPt{(1,1.5)}[A] % same & with label A                %
+% \drawPt{(1,1.5)}[A][below] % same & label below the node %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NewDocumentCommand{\drawPt}{m o o}{%
+    \IfNoValueTF{#3} {
+        \IfNoValueTF{#2} {
+            \draw[fill=white] #1 circle (1.5pt) node[below] {};
+        } {
+            \draw[fill=white] #1 circle (1.5pt) node[below] {#2};
+        }
+    } {
+        \draw[fill=white] #1 circle (1.5pt) node[#3] {#2};
+    }
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Draw points in TikzPicture w/o label                     %
+% Example Usage                                            %
+% \drawPts{(1,1.5), (2,3), (5,7)}                          %
+% draw three points, respectively at the coordinate given  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\drawPts}[1]{
+    \foreach \coor in {#1} {
+        % Draw circles at the points
+        \edef\temp{\noexpand\draw[fill=white] \coor circle (1.5pt);}
+        \temp
+    }
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Citation of the code below                        %
