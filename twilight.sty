@@ -1,5 +1,5 @@
 % In a project, always first use the following mandatory packages
-% \usepackage{graphicx, amssymb, amsmath, amsthm, dsfont, tikz, pgfplots, hyperref, xcolor, enumitem, fancyhdr, xparse, twilight}
+% \usepackage{graphicx, amssymb, amsmath, amsthm, dsfont, tikz, pgfplots, hyperref, xcolor, enumitem, fancyhdr, xparse, geometry, bbm, twilight}
 \RequirePackage{graphicx}
 \RequirePackage{amssymb, amsmath, amsthm, dsfont}
 \RequirePackage{tikz}
@@ -9,6 +9,9 @@
 \RequirePackage{enumitem}
 \RequirePackage{fancyhdr}
 \RequirePackage{xparse}
+\RequirePackage{geometry}
+\RequirePackage{bbm}
+\RequirePackage{calligra}
 
 \usepgfplotslibrary{fillbetween}
 \usetikzlibrary{patterns}
@@ -29,6 +32,9 @@
     \phantom{}\hrule\phantom{}
 }
 
+% Color Definitions
+\definecolor{NavyBlue}{RGB}{0,0,128}
+
 % Mathematical Notations
 \newcommand{\pf}[2]{\dfrac{\partial #1}{\partial #2}} % Partial Derivative
 \newcommand{\df}[2]{\dfrac{\text{d} #1}{\text{d} #2}} % Derivative
@@ -38,6 +44,8 @@
 \newcommand{\Q}{\mathds{Q}}
 \newcommand{\C}{\mathds{C}}
 \newcommand{\Z}{\mathds{Z}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\I}{\mathbb{I}}
 % Calligraphic Letters
 \newcommand{\Ac}{\mathcal{A}}
 \newcommand{\Bc}{\mathcal{B}}
@@ -65,6 +73,59 @@
 \newcommand{\Xc}{\mathcal{X}}
 \newcommand{\Yc}{\mathcal{Y}}
 \newcommand{\Zc}{\mathcal{Z}}
+% Bold & Italic Letters
+\newcommand{\av}{\boldsymbol{a}}
+\newcommand{\bv}{\boldsymbol{b}}
+\newcommand{\cv}{\boldsymbol{c}}
+\newcommand{\dv}{\boldsymbol{d}}
+\newcommand{\ev}{\boldsymbol{e}}
+\newcommand{\fv}{\boldsymbol{f}}
+\newcommand{\gv}{\boldsymbol{g}}
+\newcommand{\hv}{\boldsymbol{h}}
+\newcommand{\iv}{\boldsymbol{i}}
+\newcommand{\jv}{\boldsymbol{j}}
+\newcommand{\kv}{\boldsymbol{k}}
+\newcommand{\lv}{\boldsymbol{l}}
+\newcommand{\mv}{\boldsymbol{m}}
+\newcommand{\nv}{\boldsymbol{n}}
+\newcommand{\ov}{\boldsymbol{o}}
+\newcommand{\pv}{\boldsymbol{p}}
+\newcommand{\qv}{\boldsymbol{q}}
+\newcommand{\rv}{\boldsymbol{r}}
+\newcommand{\sv}{\boldsymbol{s}}
+\newcommand{\tv}{\boldsymbol{t}}
+\newcommand{\uv}{\boldsymbol{u}}
+\newcommand{\vv}{\boldsymbol{v}}
+\newcommand{\wv}{\boldsymbol{w}}
+\newcommand{\xv}{\boldsymbol{x}}
+\newcommand{\yv}{\boldsymbol{y}}
+\newcommand{\zv}{\boldsymbol{z}}
+\newcommand{\Av}{\boldsymbol{A}}
+\newcommand{\Bv}{\boldsymbol{B}}
+\newcommand{\Cv}{\boldsymbol{C}}
+\newcommand{\Dv}{\boldsymbol{D}}
+\newcommand{\Ev}{\boldsymbol{E}}
+\newcommand{\Fv}{\boldsymbol{F}}
+\newcommand{\Gv}{\boldsymbol{G}}
+\newcommand{\Hv}{\boldsymbol{H}}
+\newcommand{\Iv}{\boldsymbol{I}}
+\newcommand{\Jv}{\boldsymbol{J}}
+\newcommand{\Kv}{\boldsymbol{K}}
+\newcommand{\Lv}{\boldsymbol{L}}
+\newcommand{\Mv}{\boldsymbol{M}}
+\newcommand{\Nv}{\boldsymbol{N}}
+\newcommand{\Ov}{\boldsymbol{O}}
+\newcommand{\Pv}{\boldsymbol{P}}
+\newcommand{\Qv}{\boldsymbol{Q}}
+\newcommand{\Rv}{\boldsymbol{R}}
+\newcommand{\Sv}{\boldsymbol{S}}
+\newcommand{\Tv}{\boldsymbol{T}}
+\newcommand{\Uv}{\boldsymbol{U}}
+\newcommand{\Vv}{\boldsymbol{V}}
+\newcommand{\Wv}{\boldsymbol{W}}
+\newcommand{\Xv}{\boldsymbol{X}}
+\newcommand{\Yv}{\boldsymbol{Y}}
+\newcommand{\Zv}{\boldsymbol{Z}}
 % Bold Letters (Vectors, Matrices, Tensors, etc.)
 \newcommand{\ab}{\mathbf{a}}
 \newcommand{\bb}{\mathbf{b}}
@@ -121,22 +182,38 @@
 \newcommand{\oneb}{\mathbf{1}} % Vector of Ones
 \newcommand{\phib}{\boldsymbol{\phi}} % Feature Vector
 \newcommand{\Phib}{\boldsymbol{\Phi}} % Feature Matrix
-\newcommand{\T}{\textnormal{T}} % Transpose of a Matrix
-\newcommand{\norm}[1]{\left|\left|#1\right|\right|} % l_2 Norm of a Vector (Default)
-\newcommand{\pnorm}[2]{\left\|#1\right\|_{#2}} % l_p Norm of a Vector
+\newcommand{\mub}{\boldsymbol{\mu}}
+\newcommand{\xib}{\boldsymbol{\xi}}
+\newcommand{\sigmab}{\boldsymbol{\sigma}}
+\newcommand{\Sigmab}{\boldsymbol{\Sigma}}
+\newcommand{\alphab}{\boldsymbol{\alpha}}
+\newcommand{\Lambdab}{\boldsymbol{\Lambda}}
+\newcommand{\lambdab}{\boldsymbol{\lambda}}
+\newcommand{\T}{\top} % Transpose of a Matrix
+\newcommand{\idc}{\mathbbm{1}}
+\NewDocumentCommand{\norm}{m o}{\IfNoValueTF{#2} {\ensuremath{\left|\left|#1\right|\right|}} {\ensuremath{\left\|#1\right\|_{#2}}}}
 \newcommand{\djunion}{\perp\kern-5pt\perp} % Disjoint Union
+% Machine Learning and Statistics Symbols
+\NewDocumentCommand{\ith}{m o}{\IfNoValueTF{#2} {#1^{(i)}} {#1^{(#2)}}}
+\newcommand{\xnor}{\text{XNOR}}
+\newcommand{\VC}{\text{VC}}
 % Real Analysis Symbols
 \newcommand{\bdry}[1]{\partial#1} % Boundary
 \newcommand{\itrr}[1]{#1^o} % Interior
 \newcommand{\clsr}[1]{\bar{#1}} % Closure
-% Machine Learning Notations
+% Machine Learning, Matrix Notations
 \DeclareMathOperator*{\argmin}{arg\,min}
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\diag}{\textbf{diag}}
 % Real Analysis Notations
 \DeclareMathOperator{\interior}{interior}
 \DeclareMathOperator{\closure}{closure}
 \DeclareMathOperator{\boundary}{boundary}
+\newcommand{\seqn}[1]{\left\{#1_n\right\}} %Standard Sequence
+\newcommand{\sseqn}[1]{\left\{#1_{n_k}\right\}} %Standard Subsequence
 % Theorem Notes Taking
 \newtheorem{theorem}{Theorem}
 \newtheorem{define}{Definition}
