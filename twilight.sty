@@ -12,6 +12,8 @@
 \RequirePackage{geometry}
 \RequirePackage{bbm}
 \RequirePackage{calligra}
+\RequirePackage{environ}
+\RequirePackage{comment}
 
 \usepgfplotslibrary{fillbetween}
 \usetikzlibrary{patterns}
@@ -31,6 +33,27 @@
     \begin{center}\Large ---\ \CourseAuthor\ --- \\ \CourseDate\end{center}
     \phantom{}\hrule\phantom{}
 }
+
+
+% Review Mode
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% use \begin{reviewmode}{1} to turn on and {0} to turn off              %
+% When in review mode, all proofs are replaced with 10 empty lines      %
+%    that allow you to print down and work by hand on the class-proofs  %
+% In all cases, use \begin{visibleproof}...\end{visibleproof} to make   %
+%    certain proofs always visible, no matter of the parameter given    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NewEnviron{reviewmode}[1]{%
+    \let\visibleproof\proof
+    \let\endvisibleproof\endproof
+    \ifnum#1=1
+        \RenewEnviron{proof}{\phantom{}\\ \\ \\ \\ \\ \\ \\ \\ \\ \\}{}
+    \fi
+    \BODY
+    \let\proof\visibleproof
+    \let\endproof\endvisibleproof
+}
+
 
 % Color Definitions
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
