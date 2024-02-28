@@ -64,6 +64,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \definecolor{NavyBlue}{RGB}{0,0,128}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Citation of the code below                                                                            %
+% TITLE: How to trim the spaces for `\BODY` in `\NewEnviron`                                            %
+% SUBTITLE: I'm not sure what the purpose of ansproofbase is. Just set the color at the outset. ...     %
+% AUTHOR: egreg @ Tex StackExchange                                                                     %
+% DATE: Jan 28th, 2024                                                                                  %
+% AVAILABILITY: https://tex.stackexchange.com/a/711780/315951                                           %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Begin of Borrowed Code
 \ExplSyntaxOn
 
 \NewDocumentEnvironment{ansproof}{O{\proofname}+b}{%
@@ -81,6 +91,8 @@
  }
 
 \ExplSyntaxOff
+% End of Borrowed Code
+
 
 
 % Mathematical Notations
