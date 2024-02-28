@@ -247,19 +247,32 @@
 \newcommand{\sigmab}{\boldsymbol{\sigma}}
 \newcommand{\Sigmab}{\boldsymbol{\Sigma}}
 \newcommand{\alphab}{\boldsymbol{\alpha}}
+\newcommand{\betab}{\boldsymbol{\beta}}
+\newcommand{\gammab}{\boldsymbol{\gamma}}
+\newcommand{\deltab}{\boldsymbol{\delta}}
+\newcommand{\Deltab}{\boldsymbol{\Delta}}
 \newcommand{\Lambdab}{\boldsymbol{\Lambda}}
 \newcommand{\lambdab}{\boldsymbol{\lambda}}
 \newcommand{\T}{\top} % Transpose of a Matrix
 \newcommand{\idc}{\mathbbm{1}}
 \NewDocumentCommand{\norm}{m o}{\IfNoValueTF{#2} {\ensuremath{\left|\left|#1\right|\right|}} {\ensuremath{\left\|#1\right\|_{#2}}}}
 \newcommand{\djunion}{\perp\kern-5pt\perp} % Disjoint Union
+\newcommand{\sjt}{\textnormal{subject to}}
+\newcommand{\st}{\textnormal{s.t.}}
+\newcommand{\opt}[1]{{{#1}^*}}
 % Machine Learning and Statistics Symbols
-\NewDocumentCommand{\ith}{m o}{\IfNoValueTF{#2} {#1^{(i)}} {#1^{(#2)}}}
+\NewDocumentCommand{\ith}{o m o}{
+    \IfNoValueTF{#3} {
+        \IfNoValueTF{#1} {{#2^{(i)}}} {{#2^{(#1)}}}
+    } {
+        \IfNoValueTF{#1} {{#2^{(i)}_{#3}}} {{#2^{(#1)}_{#3}}}
+    }
+}
 \newcommand{\xnor}{\text{XNOR}}
 \newcommand{\VC}{\text{VC}}
 % Real Analysis Symbols
 \newcommand{\bdry}[1]{\partial#1} % Boundary
-\newcommand{\itrr}[1]{#1^o} % Interior
+\newcommand{\itrr}[1]{{#1^o}} % Interior
 \newcommand{\clsr}[1]{\bar{#1}} % Closure
 % Machine Learning, Matrix Notations
 \DeclareMathOperator*{\argmin}{arg\,min}
